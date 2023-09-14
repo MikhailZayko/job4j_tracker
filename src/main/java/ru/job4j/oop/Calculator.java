@@ -31,8 +31,11 @@ public class Calculator {
         int minusResult = minus(30);
         int divideResult = calculator.divide(30);
         int sumAllResult = calculator.sumAllOperation(30);
-        System.out.println("If argument = 30:\n" + "sum = " + sumResult + "\n" + "multiply = " + multiplyResult
-                + "\n" + "minus = " + minusResult + "\n" + "divide = " + divideResult
-                + "\n" + "sumAllOperation = " + sumAllResult);
+        System.out.println("If argument = 30:"
+                + System.lineSeparator() + "sum = " + sumResult
+                + System.lineSeparator() + "multiply = " + multiplyResult
+                + System.lineSeparator() + "minus = " + minusResult
+                + System.lineSeparator() + "divide = " + divideResult
+                + System.lineSeparator() + "sumAllOperation = " + sumAllResult);
     }
 }
