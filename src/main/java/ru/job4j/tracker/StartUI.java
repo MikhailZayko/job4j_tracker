@@ -43,8 +43,8 @@ public class StartUI {
                 System.out.println("=== Delete item ===");
                 System.out.print("Enter id: ");
                 int id = Integer.parseInt(scanner.nextLine());
-                tracker.delete(id);
                 Item item = tracker.findById(id);
+                tracker.delete(id);
                 System.out.println(item != null ? "Заявка удалена успешно." : "Ошибка удаления заявки.");
             } else if (select == 4) {
                 System.out.println("=== Find item by id ===");
