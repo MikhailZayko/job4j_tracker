@@ -2,6 +2,9 @@ package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ValidateInputTest {
@@ -11,7 +14,7 @@ public class ValidateInputTest {
         Output out = new StubOutput();
         int number = 1;
         Input in = new StubInput(
-                new String[]{"one", String.valueOf(number)}
+                Arrays.asList("one", String.valueOf(number))
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
@@ -23,7 +26,7 @@ public class ValidateInputTest {
         Output out = new StubOutput();
         int number = 2;
         Input in = new StubInput(
-                new String[]{String.valueOf(number)}
+                List.of(String.valueOf(number))
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
@@ -36,11 +39,11 @@ public class ValidateInputTest {
         int firstNumber = 2;
         int secondNumber = 1;
         int thirdNumber = 3;
-        Input in = new StubInput(new String[]{
+        Input in = new StubInput(Arrays.asList(
                 String.valueOf(firstNumber),
                 String.valueOf(secondNumber),
                 String.valueOf(thirdNumber)
-        });
+        ));
         ValidateInput input = new ValidateInput(out, in);
         int firstSelected = input.askInt("Enter menu:");
         int secondSelected = input.askInt("Enter menu:");
@@ -55,7 +58,7 @@ public class ValidateInputTest {
         Output out = new StubOutput();
         int number = -5;
         Input in = new StubInput(
-                new String[]{String.valueOf(number)}
+                List.of(String.valueOf(number))
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
