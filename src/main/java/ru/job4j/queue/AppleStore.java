@@ -13,9 +13,6 @@ public class AppleStore {
     }
 
     public String getLastHappyCustomer() {
-        if (queue.isEmpty()) {
-            throw new RuntimeException("The queue cannot be empty");
-        }
         String result = null;
         for (int i = 0; i < count; i++) {
             result = queue.poll().name();
@@ -24,9 +21,6 @@ public class AppleStore {
     }
 
     public String getFirstUpsetCustomer() {
-        if (queue.isEmpty()) {
-            throw new RuntimeException("The queue cannot be empty");
-        }
         String result = null;
         for (int i = 0; i <= count; i++) {
             result = queue.poll().name();
