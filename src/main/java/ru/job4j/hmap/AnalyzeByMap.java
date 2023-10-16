@@ -50,8 +50,13 @@ public class AnalyzeByMap {
             }
             labelList.add(new Label(pupil.name(), score));
         }
-        labelList.sort(Comparator.naturalOrder());
-        return labelList.get(labelList.size() - 1);
+        Label bestStudent = labelList.get(0);
+        for (Label label : labelList) {
+            if (label.score() > bestStudent.score()) {
+                bestStudent = label;
+            }
+        }
+        return bestStudent;
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
