@@ -88,14 +88,18 @@ public class SqlTracker implements Store {
         }
     }
 
+    private Item createItem(ResultSet resultSet) throws SQLException {
+        return new Item(
+                resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getTimestamp("created").toLocalDateTime()
+        );
+    }
+
     private void addItems(PreparedStatement statement, List<Item> items) {
         try (ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-                items.add(new Item(
-                        resultSet.getInt("id"),
-                        resultSet.getString("name"),
-                        resultSet.getTimestamp("created").toLocalDateTime()
-                ));
+                items.add(createItem(resultSet));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -135,11 +139,7 @@ public class SqlTracker implements Store {
                              "SELECT * FROM items WHERE id = %d", id))) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    item = new Item(
-                            id,
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()
-                    );
+                    item = createItem(resultSet);
                 }
             }
         } catch (SQLException e) {
