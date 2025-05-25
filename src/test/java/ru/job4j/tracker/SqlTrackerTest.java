@@ -96,7 +96,8 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void whenFindAll() {
+    public void whenFindAll() throws SQLException {
+        wipeTable();
         SqlTracker tracker = new SqlTracker(connection);
         Item firstItem = new Item("firstItem");
         Item secondItem = new Item("secondItem");
